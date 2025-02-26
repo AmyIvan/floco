@@ -202,9 +202,9 @@ def annotate_encodings(pathsrc, text_dict, shape_dict, encodings_pth):
 
 def get_encodings():
     # Set path to png flowchart images
-    pngpath = ""
+    pngpath = "/data/ymai/datasets/FloCo/FloCo/Validation/png"
     # Set path to a file to save encodings
-    encodings_pth = ""
+    encodings_pth = "/data/ymai/datasets/FloCo/FloCo/Validation/encodings.txt"
 
     # Get text inside flowchart blocks and on arrowheads
     # along with their coordinates with respect to the flowchart image
