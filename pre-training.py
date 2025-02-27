@@ -9,6 +9,7 @@ from transformers import RobertaTokenizer, T5ForConditionalGeneration
 import warnings
 warnings.filterwarnings('ignore')
 
+os.environ['CUDA_VISIBLE_DEVICES'] = '4'
 
 def data_loading(codes_pth, encodings_pth):
     with open(encodings_pth) as file:
@@ -108,13 +109,17 @@ def train(epochs, train_loader, model, optim, scheduler, device, logs_pth, check
 
 def run():
     # path to augmented codes
-    train_codes_pth = ''
+    train_codes_pth = '/data/ymai/datasets/FloCo/FloCo/Train/codes/'
     # path to encodings of FloCo train set
-    train_encodings_pth = ''
+    train_encodings_pth = '/data/ymai/datasets/FloCo/FloCo/Train/encodings.txt'
     # path to a text file to save the logs
-    logs_pth = '' 
+    logs_pth = '/data/ymai/datasets/FloCo/logs.txt' 
     # path to save checkpoints
-    checkpoints_pth = ''
+    checkpoints_pth = '/data/ymai/datasets/FloCo/checkpoints/'
+    if not os.path.exists(checkpoints_pth):
+        os.makedirs(checkpoints_pth)
+
+
 
     # load and shuffle the train data
     train_inputs = data_loading(train_codes_pth, train_encodings_pth)
